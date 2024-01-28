@@ -4,7 +4,7 @@ exports.router = void 0;
 const express_1 = require("express");
 const router = (0, express_1.Router)();
 exports.router = router;
-router.get("/", (req, res) => {
+router.get("/login", (req, res) => {
     res.send(`
   
         <form method='POST' >
@@ -16,13 +16,33 @@ router.get("/", (req, res) => {
                 <label> Password </label> 
                 <input name='password' type='password' />    
          </div>
+
+         <button> submit form </button>
       </form>
     
   `);
 });
-router.post("/", (req, res) => {
+router.post("/login", (req, res) => {
     const { email, password } = req.body;
-    if (email) {
-        res.send(`${email.toUpperCase()}   `);
+    if (email &&
+        password &&
+        email === "muhammmad@gmail.com" &&
+        password === "password") {
+        req.session = { isLoggedIn: true };
+    }
+});
+router.get("/", (req, res) => {
+    if (req.session && req.session.isLogged) {
+        res.send(`
+
+      <div> 
+
+            <p> You are logged in </p>
+
+            <a href='/logout' />
+
+     </div>
+    
+    `);
     }
 });

@@ -8,7 +8,7 @@ const loginRoutes_1 = require("./routes/loginRoutes");
 const body_parser_1 = __importDefault(require("body-parser"));
 const app = (0, express_1.default)();
 const port = 3000;
-body_parser_1.default.urlencoded({ extended: true });
+app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use(loginRoutes_1.router);
 app.listen(port, () => {
     console.log(`Running  on port ${port}`);
