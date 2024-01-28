@@ -41,16 +41,19 @@ router.post("/login", (req, res) => {
     `);
     }
 });
+router.post("/logout", (req, res) => {
+    req.session = undefined;
+    res.redirect("/login");
+});
 router.get("/", (req, res) => {
-    if (req.session && req.session.isLogged) {
+    console.log(req.session);
+    if (req.session && req.session.isLoggedIn) {
         res.send(`
 
       <div> 
-
             <p> You are logged in </p>
 
             <a href='/logout' > Logout </a>
-
      </div>
     
     `);
@@ -68,8 +71,4 @@ router.get("/", (req, res) => {
 
     `);
     }
-});
-router.post("/logout", (req, res) => {
-    req.session = undefined;
-    res.redirect("/login");
 });

@@ -48,16 +48,22 @@ router.post("/login", (req: RequestWithBody, res: Response) => {
   }
 });
 
+router.post("/logout", (req: Request, res: Response) => {
+  req.session = undefined;
+
+  res.redirect("/login");
+});
+
 router.get("/", (req: Request, res: Response) => {
-  if (req.session && req.session.isLogged) {
+  console.log(req.session);
+
+  if (req.session && req.session.isLoggedIn) {
     res.send(`
 
       <div> 
-
             <p> You are logged in </p>
 
             <a href='/logout' > Logout </a>
-
      </div>
     
     `);
@@ -74,12 +80,6 @@ router.get("/", (req: Request, res: Response) => {
 
     `);
   }
-});
-
-router.post("/logout", (req: Request, res: Response) => {
-  req.session = undefined;
-
-  res.redirect("/login");
 });
 
 export { router };
