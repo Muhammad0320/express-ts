@@ -25,9 +25,6 @@ router.get("/protected", AuthChecker, (req, res) => {
   <div> 
 
   <p> You can access the protected route </p> 
-
-    
-
     </div>
 
   `);
@@ -69,7 +66,7 @@ router.post("/login", (req, res) => {
     `);
     }
 });
-router.post("/logout", (req, res) => {
+router.get("/logout", (req, res) => {
     req.session = undefined;
     res.redirect("/login");
 });
