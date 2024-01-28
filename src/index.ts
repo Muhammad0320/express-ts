@@ -1,5 +1,3 @@
-import "./style.css";
-
 import express from "express";
 import { router } from "./routes/loginRoutes";
 import bodyParser from "body-parser";
