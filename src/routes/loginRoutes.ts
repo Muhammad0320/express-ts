@@ -35,6 +35,8 @@ router.post("/login", (req: RequestWithBody, res: Response) => {
     password === "password"
   ) {
     req.session = { isLoggedIn: true };
+
+    res.redirect("/");
   }
 });
 
@@ -53,8 +55,6 @@ router.get("/", (req: Request, res: Response) => {
     `);
   } else {
     res.send(`  
-    
-    
     <div> 
 
     <p> You are NOT logged in </p>
@@ -66,6 +66,12 @@ router.get("/", (req: Request, res: Response) => {
 
     `);
   }
+});
+
+router.post("/logout", (req: Request, res: Response) => {
+  req.session = undefined;
+
+  res.redirect("/login");
 });
 
 export { router };

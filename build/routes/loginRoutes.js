@@ -29,6 +29,7 @@ router.post("/login", (req, res) => {
         email === "muhammmad@gmail.com" &&
         password === "password") {
         req.session = { isLoggedIn: true };
+        res.redirect("/");
     }
 });
 router.get("/", (req, res) => {
@@ -47,8 +48,6 @@ router.get("/", (req, res) => {
     }
     else {
         res.send(`  
-    
-    
     <div> 
 
     <p> You are NOT logged in </p>
@@ -60,4 +59,8 @@ router.get("/", (req, res) => {
 
     `);
     }
+});
+router.post("/logout", (req, res) => {
+    req.session = undefined;
+    res.redirect("/login");
 });
