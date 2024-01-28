@@ -37,6 +37,14 @@ router.post("/login", (req: RequestWithBody, res: Response) => {
     req.session = { isLoggedIn: true };
 
     res.redirect("/");
+  } else {
+    res.send(`
+
+      <div>  
+          <div> Invalid login credentials try again </div>
+      </div>
+    
+    `);
   }
 });
 
@@ -48,7 +56,7 @@ router.get("/", (req: Request, res: Response) => {
 
             <p> You are logged in </p>
 
-            <a href='/logout' />
+            <a href='/logout' > Logout </a>
 
      </div>
     
@@ -59,7 +67,7 @@ router.get("/", (req: Request, res: Response) => {
 
     <p> You are NOT logged in </p>
 
-    <a href='/login' />
+    <a href='/login' > Login </a>
 
 </div>
 
