@@ -2,6 +2,10 @@ import { Request, Response, Router } from "express";
 
 const router = Router();
 
+interface RequestWithBody extends Request {
+  body: { [key: string]: string | undefined };
+}
+
 router.get("/", (req: Request, res: Response) => {
   res.send(`
   
@@ -19,10 +23,12 @@ router.get("/", (req: Request, res: Response) => {
   `);
 });
 
-router.post("/", (req: Request, res: Response) => {
+router.post("/", (req: RequestWithBody, res: Response) => {
   const { email, password } = req.body;
 
-  res.send(`${email}  ${password} `);
+  if (email) {
+    res.send(`${email.toUpperCase()}   `);
+  }
 });
 
 export { router };
