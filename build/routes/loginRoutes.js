@@ -45,4 +45,19 @@ router.get("/", (req, res) => {
     
     `);
     }
+    else {
+        res.send(`  
+    
+    
+    <div> 
+
+    <p> You are NOT logged in </p>
+
+    <a href='/login' />
+
+</div>
+
+
+    `);
+    }
 });

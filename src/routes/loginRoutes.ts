@@ -51,6 +51,20 @@ router.get("/", (req: Request, res: Response) => {
      </div>
     
     `);
+  } else {
+    res.send(`  
+    
+    
+    <div> 
+
+    <p> You are NOT logged in </p>
+
+    <a href='/login' />
+
+</div>
+
+
+    `);
   }
 });
 
