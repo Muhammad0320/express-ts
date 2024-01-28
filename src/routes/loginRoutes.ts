@@ -1,10 +1,24 @@
-import { Request, Response, Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 
 const router = Router();
 
 interface RequestWithBody extends Request {
   body: { [key: string]: string | undefined };
 }
+
+const AuthChecker = (req: Request, res: Response, next: NextFunction): void => {
+  if (req.session && req.session.isLoggedIn) {
+    return next();
+  }
+
+  res.send(`
+    
+
+    Forbidden
+
+  
+  `);
+};
 
 router.get("/login", (req: Request, res: Response) => {
   res.send(`
