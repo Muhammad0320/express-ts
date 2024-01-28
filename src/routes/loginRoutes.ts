@@ -13,12 +13,29 @@ const AuthChecker = (req: Request, res: Response, next: NextFunction): void => {
 
   res.send(`
     
-
+  <div>
+    <h1>
     Forbidden
+    </h1>       
+  </div>
 
   
   `);
 };
+
+router.get("/protected", AuthChecker, (req: Request, res: Response) => {
+  res.send(`
+
+  <div> 
+
+  <p> You can access the protected route </p> 
+
+    
+
+    </div>
+
+  `);
+});
 
 router.get("/login", (req: Request, res: Response) => {
   res.send(`
