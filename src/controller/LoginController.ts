@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import { get } from "./decorators/get";
+import { controller } from "./decorators/controller";
 
 @controller("/")
 export class LoginController {
@@ -21,12 +23,4 @@ export class LoginController {
           
         `);
   }
-}
-
-const get = (path: string) => {
-  return function (target: LoginController, key: string) {};
-};
-
-function controller(path: string) {
-  return function (target: Function) {};
 }
