@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 @controller("/")
 export class LoginController {
   @get("/login")
-  get(req: Request, res: Response) {
+  getLogin(req: Request, res: Response) {
     res.send(`
         
               <form method='POST' >
@@ -28,5 +28,5 @@ const get = (path: string) => {
 };
 
 function controller(path: string) {
-  return function (target: typeof LoginController) {};
+  return function (target: Function) {};
 }

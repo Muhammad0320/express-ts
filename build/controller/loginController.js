@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginController = void 0;
 let LoginController = class LoginController {
-    get(req, res) {
+    getLogin(req, res) {
         res.send(`
         
               <form method='POST' >
@@ -36,7 +36,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
-], LoginController.prototype, "get", null);
+], LoginController.prototype, "getLogin", null);
 exports.LoginController = LoginController = __decorate([
     controller("/")
 ], LoginController);
