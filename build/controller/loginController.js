@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginController = void 0;
-class LoginController {
+let LoginController = class LoginController {
     get(req, res) {
         res.send(`
         
@@ -29,7 +29,7 @@ class LoginController {
           
         `);
     }
-}
+};
 exports.LoginController = LoginController;
 __decorate([
     get("/login"),
@@ -37,9 +37,12 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], LoginController.prototype, "get", null);
+exports.LoginController = LoginController = __decorate([
+    controller("/")
+], LoginController);
 const get = (path) => {
     return function (target, key) { };
 };
-const controller = (path) => {
-    return function (target, key) { };
-};
+function controller(path) {
+    return function (target) { };
+}

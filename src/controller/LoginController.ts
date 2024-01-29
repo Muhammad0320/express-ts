@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 
+@controller("/")
 export class LoginController {
   @get("/login")
   get(req: Request, res: Response) {
@@ -26,6 +27,6 @@ const get = (path: string) => {
   return function (target: LoginController, key: string) {};
 };
 
-const controller = (path: string) => {
-  return function (target: typeof LoginController, key: string) {};
-};
+function controller(path: string) {
+  return function (target: typeof LoginController) {};
+}
