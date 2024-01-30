@@ -5,7 +5,6 @@ import bodyParser from "body-parser";
 import session from "cookie-session";
 import "./controller/LoginController";
 import { AppRouter } from "./controller/AppRputer";
-// import { router as controllerRouter } from "./controller/decorators/controller";
 
 const app = express();
 

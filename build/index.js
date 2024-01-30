@@ -9,7 +9,6 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cookie_session_1 = __importDefault(require("cookie-session"));
 require("./controller/LoginController");
 const AppRputer_1 = require("./controller/AppRputer");
-// import { router as controllerRouter } from "./controller/decorators/controller";
 const app = (0, express_1.default)();
 const port = 3000;
 app.use((0, cookie_session_1.default)({
