@@ -4,7 +4,8 @@ import bodyParser from "body-parser";
 
 import session from "cookie-session";
 import "./controller/LoginController";
-import { router as controllerRouter } from "./controller/decorators/controller";
+import { AppRouter } from "./controller/AppRputer";
+// import { router as controllerRouter } from "./controller/decorators/controller";
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(router);
 
-app.use(controllerRouter);
+app.use(AppRouter.getInstance());
 
 app.listen(port, () => {
   console.log(`Running  on port ${port}`);
