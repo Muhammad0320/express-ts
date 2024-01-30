@@ -51,4 +51,11 @@ export class LoginController {
       `);
     }
   }
+
+  @post("/logout")
+  PostLogout(req: Request, res: Response) {
+    req.session = undefined;
+
+    res.redirect("/login");
+  }
 }

@@ -52,6 +52,10 @@ let LoginController = class LoginController {
       `);
         }
     }
+    PostLogout(req, res) {
+        req.session = undefined;
+        res.redirect("/login");
+    }
 };
 exports.LoginController = LoginController;
 __decorate([
@@ -68,6 +72,12 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], LoginController.prototype, "postLogin", null);
+__decorate([
+    (0, route_1.post)("/logout"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], LoginController.prototype, "PostLogout", null);
 exports.LoginController = LoginController = __decorate([
     (0, controller_1.controller)("/auth")
 ], LoginController);
