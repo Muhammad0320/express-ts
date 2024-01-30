@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { AppRouter } from "../AppRouter";
+import { AppRouter } from "../../AppRouter";
 import { Methods } from "./Methods";
 
 const router = AppRouter.getInstance();

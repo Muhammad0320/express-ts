@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.controller = void 0;
 require("reflect-metadata");
-const AppRouter_1 = require("../AppRouter");
+const AppRouter_1 = require("../../AppRouter");
 const router = AppRouter_1.AppRouter.getInstance();
 const controller = (RouterPrefix) => {
     return function (target) {
