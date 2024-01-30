@@ -28,6 +28,7 @@ const controller = (RouterPrefix) => {
             const routeHandler = target.prototype[key];
             const path = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.path, target.prototype, key);
             const method = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.method, target.prototype, key);
+            console.log(method);
             const middlewares = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.middleware, target.prototype, key) ||
                 [];
             const validators = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.validator, target.prototype, key) ||

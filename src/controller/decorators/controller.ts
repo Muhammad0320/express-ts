@@ -47,6 +47,8 @@ export const controller = (RouterPrefix: string) => {
         key
       );
 
+      console.log(method);
+
       const middlewares: RequestHandler[] =
         Reflect.getMetadata(MetadataKeys.middleware, target.prototype, key) ||
         [];
