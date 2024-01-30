@@ -57,8 +57,15 @@ export const controller = (RouterPrefix: string) => {
         key
       );
 
+      const validator = bodyValidators(validators);
+
       if (path) {
-        router[method](`${RouterPrefix}${path}`, ...middlewares, routeHandler);
+        router[method](
+          `${RouterPrefix}${path}`,
+          ...middlewares,
+          validator,
+          routeHandler
+        );
       }
     });
   };
