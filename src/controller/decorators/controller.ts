@@ -45,17 +45,13 @@ export const controller = (RouterPrefix: string) => {
         key
       );
 
-      const middlewares: RequestHandler[] = Reflect.getMetadata(
-        MetadataKeys.middleware,
-        target.prototype,
-        key
-      );
+      const middlewares: RequestHandler[] =
+        Reflect.getMetadata(MetadataKeys.middleware, target.prototype, key) ||
+        [];
 
-      const validators: string[] = Reflect.getMetadata(
-        MetadataKeys.validator,
-        target.prototype,
-        key
-      );
+      const validators: string[] =
+        Reflect.getMetadata(MetadataKeys.validator, target.prototype, key) ||
+        [];
 
       const validator = bodyValidators(validators);
 

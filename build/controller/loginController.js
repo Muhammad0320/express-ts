@@ -38,10 +38,7 @@ let LoginController = class LoginController {
     }
     postLogin(req, res) {
         const { email, password } = req.body;
-        if (email &&
-            password &&
-            email === "muhammmad@gmail.com" &&
-            password === "password") {
+        if (email === "muhammmad@gmail.com" && password === "password") {
             req.session = { isLoggedIn: true };
             res.redirect("/");
         }
