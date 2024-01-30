@@ -8,6 +8,7 @@ const loginRoutes_1 = require("./routes/loginRoutes");
 const body_parser_1 = __importDefault(require("body-parser"));
 const cookie_session_1 = __importDefault(require("cookie-session"));
 require("./controller/LoginController");
+require("./controller/RootController");
 const AppRouter_1 = require("./AppRouter");
 const app = (0, express_1.default)();
 const port = 3000;
