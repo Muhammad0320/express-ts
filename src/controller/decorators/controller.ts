@@ -29,10 +29,8 @@ export const controller = (RouterPrefix: string) => {
         key
       );
 
-      console.log(middlewares, "shit");
-
       if (path) {
-        router[method](`${RouterPrefix}${path}`, routeHandler);
+        router[method](`${RouterPrefix}${path}`, ...middlewares, routeHandler);
       }
     });
   };
