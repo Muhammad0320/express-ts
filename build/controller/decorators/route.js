@@ -6,7 +6,7 @@ const Methods_1 = require("./Methods");
 const MetadataKeys_1 = require("./MetadataKeys");
 const buildMethod = function (method) {
     return function (path) {
-        return function (target, key) {
+        return function (target, key, desc) {
             Reflect.defineMetadata(MetadataKeys_1.MetadataKeys.path, path, target, key);
             Reflect.defineMetadata(MetadataKeys_1.MetadataKeys.method, method, target, key);
         };
