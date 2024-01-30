@@ -10,6 +10,10 @@ export const controller = (RouterPrefix: string) => {
 
       const path = Reflect.getMetadata("path", target.prototype, key);
 
+      console.log(path);
+
+      console.log(RouterPrefix);
+
       router.get(`${RouterPrefix}${path}`, routeHandler);
     });
   };
