@@ -12,11 +12,7 @@ const buildMethod = function (method: string) {
 };
 
 export const get = buildMethod(Methods.get);
-
-export const post = buildMethod(Methods.post);
-
-export const patch = buildMethod(Methods.patch);
-
 export const put = buildMethod(Methods.put);
-
+export const post = buildMethod(Methods.post);
 export const del = buildMethod(Methods.delete);
+export const patch = buildMethod(Methods.patch);
