@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.patch = exports.del = exports.post = exports.put = exports.get = void 0;
 require("reflect-metadata");
-const Methods_1 = require("../Methods");
+const Methods_1 = require("./Methods");
 const buildMethod = function (method) {
     return function (path) {
         return function (target, key) {

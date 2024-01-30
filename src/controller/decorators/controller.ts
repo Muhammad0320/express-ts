@@ -1,6 +1,6 @@
 import "reflect-metadata";
-import { AppRouter } from "../AppRputer";
-import { Methods } from "../Methods";
+import { AppRouter } from "../AppRouter";
+import { Methods } from "./Methods";
 
 const router = AppRouter.getInstance();
 
@@ -11,14 +11,14 @@ export const controller = (RouterPrefix: string) => {
 
       const path = Reflect.getMetadata("path", target.prototype, key);
 
-      const methods: Methods = Reflect.getMetadata(
+      const method: Methods = Reflect.getMetadata(
         "method",
         target.prototype,
         key
       );
 
       if (path) {
-        router[methods](`${RouterPrefix}${path}`, routeHandler);
+        router[method](`${RouterPrefix}${path}`, routeHandler);
       }
     });
   };

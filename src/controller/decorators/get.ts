@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Methods } from "../Methods";
+import { Methods } from "./Methods";
 
 const buildMethod = function (method: string) {
   return function (path: string) {
