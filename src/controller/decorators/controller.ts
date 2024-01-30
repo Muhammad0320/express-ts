@@ -1,8 +1,8 @@
 import "reflect-metadata";
+import { AppRouter } from "../AppRputer";
 
-import express from "express";
+const router = AppRouter.getInstance();
 
-const router = express.Router();
 export const controller = (RouterPrefix: string) => {
   return function (target: Function) {
     Object.getOwnPropertyNames(target.prototype).forEach((key) => {
@@ -10,13 +10,7 @@ export const controller = (RouterPrefix: string) => {
 
       const path = Reflect.getMetadata("path", target.prototype, key);
 
-      console.log(path);
-
-      console.log(RouterPrefix);
-
       router.get(`${RouterPrefix}${path}`, routeHandler);
     });
   };
 };
-
-export { router };
