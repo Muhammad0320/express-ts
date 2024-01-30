@@ -40,6 +40,16 @@ let RootController = class RootController {
       `);
         }
     }
+    getProtected(req, res) {
+        res.send(`
+  
+    <div> 
+  
+    <p> You can access the protected route </p> 
+      </div>
+  
+    `);
+    }
 };
 exports.RootController = RootController;
 __decorate([
@@ -48,6 +58,12 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], RootController.prototype, "getRoot", null);
+__decorate([
+    (0, route_1.get)("/protected"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], RootController.prototype, "getProtected", null);
 exports.RootController = RootController = __decorate([
     (0, controller_1.controller)("")
 ], RootController);

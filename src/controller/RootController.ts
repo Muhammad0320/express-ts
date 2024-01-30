@@ -32,4 +32,16 @@ export class RootController {
       `);
     }
   }
+
+  @get("/protected")
+  getProtected(req: Request, res: Response) {
+    res.send(`
+  
+    <div> 
+  
+    <p> You can access the protected route </p> 
+      </div>
+  
+    `);
+  }
 }
