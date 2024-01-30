@@ -5,6 +5,21 @@ require("reflect-metadata");
 const AppRouter_1 = require("../../AppRouter");
 const MetadataKeys_1 = require("./MetadataKeys");
 const router = AppRouter_1.AppRouter.getInstance();
+const bodyValidator = (keys) => {
+    return (req, res, next) => {
+        if (!req.body) {
+            res.status(422).send("Invalid input");
+            return;
+        }
+        for (const key of keys) {
+            if (!req.body[key]) {
+                res.status(422).send("Invalid input");
+                return;
+            }
+        }
+        next();
+    };
+};
 const controller = (RouterPrefix) => {
     return function (target) {
         Object.getOwnPropertyNames(target.prototype).forEach((key) => {
