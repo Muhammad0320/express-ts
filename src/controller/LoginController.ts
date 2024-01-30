@@ -19,7 +19,7 @@ export class LoginController {
               <form method='POST' >
                   <div> 
                       <label> Email </label>
-                      <input name='email' />
+                      <input name='eml' />
                   </div>  
                   <div>
                       <label> Password </label> 
