@@ -12,8 +12,9 @@ const controller = (RouterPrefix) => {
             const path = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.path, target.prototype, key);
             const method = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.method, target.prototype, key);
             const middlewares = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.middleware, target.prototype, key);
+            console.log(middlewares, "shit");
             if (path) {
-                router[method](`${RouterPrefix}${path}`, ...middlewares, routeHandler);
+                router[method](`${RouterPrefix}${path}`, routeHandler);
             }
         });
     };

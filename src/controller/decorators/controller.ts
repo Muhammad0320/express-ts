@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { AppRouter } from "../../AppRouter";
 import { Methods } from "./Methods";
 import { MetadataKeys } from "./MetadataKeys";
+import { RequestHandler } from "express";
 
 const router = AppRouter.getInstance();
 
@@ -22,14 +23,16 @@ export const controller = (RouterPrefix: string) => {
         key
       );
 
-      const middlewares = Reflect.getMetadata(
+      const middlewares: RequestHandler[] = Reflect.getMetadata(
         MetadataKeys.middleware,
         target.prototype,
         key
       );
 
+      console.log(middlewares, "shit");
+
       if (path) {
-        router[method](`${RouterPrefix}${path}`, ...middlewares, routeHandler);
+        router[method](`${RouterPrefix}${path}`, routeHandler);
       }
     });
   };
