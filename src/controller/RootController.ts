@@ -1,6 +1,24 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { controller } from "./decorators/controller";
 import { get } from "./decorators/route";
+import { use } from "./decorators/use";
+
+const AuthChecker = (req: Request, res: Response, next: NextFunction): void => {
+  if (req.session && req.session.isLoggedIn) {
+    return next();
+  }
+
+  res.send(`
+      
+    <div>
+      <h1>
+      Forbidden
+      </h1>       
+    </div>
+  
+    
+    `);
+};
 
 @controller("")
 export class RootController {
@@ -34,6 +52,7 @@ export class RootController {
   }
 
   @get("/protected")
+  @use(AuthChecker)
   getProtected(req: Request, res: Response) {
     res.send(`
   

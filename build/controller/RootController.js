@@ -12,6 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RootController = void 0;
 const controller_1 = require("./decorators/controller");
 const route_1 = require("./decorators/route");
+const use_1 = require("./decorators/use");
+const AuthChecker = (req, res, next) => {
+    if (req.session && req.session.isLoggedIn) {
+        return next();
+    }
+    res.send(`
+      
+    <div>
+      <h1>
+      Forbidden
+      </h1>       
+    </div>
+  
+    
+    `);
+};
 let RootController = class RootController {
     getRoot(req, res) {
         console.log(req.session);
@@ -60,6 +76,7 @@ __decorate([
 ], RootController.prototype, "getRoot", null);
 __decorate([
     (0, route_1.get)("/protected"),
+    (0, use_1.use)(AuthChecker),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
