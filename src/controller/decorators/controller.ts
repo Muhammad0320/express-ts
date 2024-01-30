@@ -14,11 +14,7 @@ const bodyValidators = (keys: string[]): RequestHandler => {
       return;
     }
 
-    console.log("shittt");
-
     for (const key of keys) {
-      console.log(key);
-
       if (!req.body[key]) {
         res.status(422).send("Invalid input");
 
@@ -46,8 +42,6 @@ export const controller = (RouterPrefix: string) => {
         target.prototype,
         key
       );
-
-      console.log(method);
 
       const middlewares: RequestHandler[] =
         Reflect.getMetadata(MetadataKeys.middleware, target.prototype, key) ||

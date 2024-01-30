@@ -1,7 +1,6 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import { get, post } from "./decorators/route";
 import { controller } from "./decorators/controller";
-import { use } from "./decorators/use";
 import { bodyValidator } from "./decorators/bodyValidator";
 
 export interface RequestWithBody extends Request {
