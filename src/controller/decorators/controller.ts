@@ -17,7 +17,9 @@ export const controller = (RouterPrefix: string) => {
         key
       );
 
-      router[methods](`${RouterPrefix}${path}`, routeHandler);
+      if (path) {
+        router[methods](`${RouterPrefix}${path}`, routeHandler);
+      }
     });
   };
 };
