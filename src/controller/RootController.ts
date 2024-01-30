@@ -32,7 +32,7 @@ export class RootController {
         <div> 
               <p> You are logged in </p>
   
-              <a href='/logout' > Logout </a>
+              <a href='/auth/logout' > Logout </a>
        </div>
       
       `);
@@ -42,7 +42,7 @@ export class RootController {
   
       <p> You are NOT logged in </p>
   
-      <a href='/login' > Login </a>
+      <a href='/auth/login' > Login </a>
   
   </div>
   
