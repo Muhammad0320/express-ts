@@ -1,12 +1,13 @@
 import "reflect-metadata";
 import { Methods } from "./Methods";
+import { MetadataKeys } from "./MetadataKeys";
 
 const buildMethod = function (method: string) {
   return function (path: string) {
     return function (target: any, key: string) {
-      Reflect.defineMetadata("path", path, target, key);
+      Reflect.defineMetadata(MetadataKeys.path, path, target, key);
 
-      Reflect.defineMetadata("method", method, target, key);
+      Reflect.defineMetadata(MetadataKeys.method, method, target, key);
     };
   };
 };
