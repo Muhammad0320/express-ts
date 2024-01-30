@@ -2,6 +2,7 @@ import "reflect-metadata";
 
 import express from "express";
 
+const router = express.Router();
 export const controller = (RouterPrefix: string) => {
   return function (target: Function) {
     Object.getOwnPropertyNames(target).forEach((key) => {
@@ -9,9 +10,9 @@ export const controller = (RouterPrefix: string) => {
 
       const path = Reflect.getMetadata("path", target.prototype, key);
 
-      const router = express.Router();
-
       router.get(`${RouterPrefix}${path}`, routeHandler);
     });
   };
 };
+
+export { router };
