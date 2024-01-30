@@ -12,11 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginController = void 0;
 const route_1 = require("./decorators/route");
 const controller_1 = require("./decorators/controller");
-const use_1 = require("./decorators/use");
 const bodyValidator_1 = require("./decorators/bodyValidator");
-const useMiddleware = (req, res, next) => {
-    console.log("Let's see if you work ");
-};
 let LoginController = class LoginController {
     getLogin(req, res) {
         res.send(`
@@ -54,15 +50,14 @@ let LoginController = class LoginController {
       `);
         }
     }
-    PostLogout(req, res) {
+    getLogout(req, res) {
         req.session = undefined;
-        res.redirect("/login");
+        res.redirect("/auth/login");
     }
 };
 exports.LoginController = LoginController;
 __decorate([
     (0, route_1.get)("/login"),
-    (0, use_1.use)(useMiddleware),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
@@ -75,11 +70,11 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], LoginController.prototype, "postLogin", null);
 __decorate([
-    (0, route_1.post)("/logout"),
+    (0, route_1.get)("/logout"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
-], LoginController.prototype, "PostLogout", null);
+], LoginController.prototype, "getLogout", null);
 exports.LoginController = LoginController = __decorate([
     (0, controller_1.controller)("/auth")
 ], LoginController);

@@ -4,10 +4,6 @@ import { controller } from "./decorators/controller";
 import { use } from "./decorators/use";
 import { bodyValidator } from "./decorators/bodyValidator";
 
-const useMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  console.log("Let's see if you work ");
-};
-
 export interface RequestWithBody extends Request {
   body: { [key: string]: string | undefined };
 }
@@ -15,7 +11,6 @@ export interface RequestWithBody extends Request {
 @controller("/auth")
 export class LoginController {
   @get("/login")
-  @use(useMiddleware)
   getLogin(req: Request, res: Response) {
     res.send(`
         
@@ -57,10 +52,10 @@ export class LoginController {
     }
   }
 
-  @post("/logout")
-  PostLogout(req: Request, res: Response) {
+  @get("/logout")
+  getLogout(req: Request, res: Response) {
     req.session = undefined;
 
-    res.redirect("/login");
+    res.redirect("/auth/login");
   }
 }
