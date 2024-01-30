@@ -2,12 +2,15 @@ import { NextFunction, Request, Response } from "express";
 import { get, post } from "./decorators/route";
 import { controller } from "./decorators/controller";
 import { use } from "./decorators/use";
-import { RequestWithBody } from "../routes/loginRoutes";
 import { bodyValidator } from "./decorators/bodyValidator";
 
 const useMiddleware = (req: Request, res: Response, next: NextFunction) => {
   console.log("Let's see if you work ");
 };
+
+export interface RequestWithBody extends Request {
+  body: { [key: string]: string | undefined };
+}
 
 @controller("/auth")
 export class LoginController {
