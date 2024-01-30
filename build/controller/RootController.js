@@ -13,13 +13,39 @@ exports.RootController = void 0;
 const controller_1 = require("./decorators/controller");
 const route_1 = require("./decorators/route");
 let RootController = class RootController {
-    getRoot() { }
+    getRoot(req, res) {
+        console.log(req.session);
+        if (req.session && req.session.isLoggedIn) {
+            res.send(`
+  
+        <div> 
+              <p> You are logged in </p>
+  
+              <a href='/logout' > Logout </a>
+       </div>
+      
+      `);
+        }
+        else {
+            res.send(`  
+      <div> 
+  
+      <p> You are NOT logged in </p>
+  
+      <a href='/login' > Login </a>
+  
+  </div>
+  
+  
+      `);
+        }
+    }
 };
 exports.RootController = RootController;
 __decorate([
     (0, route_1.get)("/"),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], RootController.prototype, "getRoot", null);
 exports.RootController = RootController = __decorate([
