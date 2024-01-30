@@ -13,6 +13,7 @@ exports.LoginController = void 0;
 const route_1 = require("./decorators/route");
 const controller_1 = require("./decorators/controller");
 const use_1 = require("./decorators/use");
+const bodyValidator_1 = require("./decorators/bodyValidator");
 const useMiddleware = (req, res, next) => {
     console.log("Let's see if you work ");
 };
@@ -35,6 +36,25 @@ let LoginController = class LoginController {
           
         `);
     }
+    postLogin(req, res) {
+        const { email, password } = req.body;
+        if (email &&
+            password &&
+            email === "muhammmad@gmail.com" &&
+            password === "password") {
+            req.session = { isLoggedIn: true };
+            res.redirect("/");
+        }
+        else {
+            res.send(`
+  
+        <div>  
+            <div> Invalid login credentials try again </div>
+        </div>
+      
+      `);
+        }
+    }
 };
 exports.LoginController = LoginController;
 __decorate([
@@ -44,6 +64,13 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], LoginController.prototype, "getLogin", null);
+__decorate([
+    (0, route_1.post)("/login"),
+    (0, bodyValidator_1.bodyValidator)("email", "password"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], LoginController.prototype, "postLogin", null);
 exports.LoginController = LoginController = __decorate([
     (0, controller_1.controller)("/auth")
 ], LoginController);

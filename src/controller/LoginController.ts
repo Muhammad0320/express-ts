@@ -1,7 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { get } from "./decorators/route";
+import { get, post } from "./decorators/route";
 import { controller } from "./decorators/controller";
 import { use } from "./decorators/use";
+import { RequestWithBody } from "../routes/loginRoutes";
+import { bodyValidator } from "./decorators/bodyValidator";
 
 const useMiddleware = (req: Request, res: Response, next: NextFunction) => {
   console.log("Let's see if you work ");
@@ -28,5 +30,30 @@ export class LoginController {
             </form>
           
         `);
+  }
+
+  @post("/login")
+  @bodyValidator("email", "password")
+  postLogin(req: RequestWithBody, res: Response) {
+    const { email, password } = req.body;
+
+    if (
+      email &&
+      password &&
+      email === "muhammmad@gmail.com" &&
+      password === "password"
+    ) {
+      req.session = { isLoggedIn: true };
+
+      res.redirect("/");
+    } else {
+      res.send(`
+  
+        <div>  
+            <div> Invalid login credentials try again </div>
+        </div>
+      
+      `);
+    }
   }
 }

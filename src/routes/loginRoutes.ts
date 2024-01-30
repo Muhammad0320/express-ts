@@ -2,7 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 
 const router = Router();
 
-interface RequestWithBody extends Request {
+export interface RequestWithBody extends Request {
   body: { [key: string]: string | undefined };
 }
 
