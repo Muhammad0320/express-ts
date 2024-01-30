@@ -29,34 +29,3 @@ router.get("/protected", AuthChecker, (req, res) => {
 
   `);
 });
-router.get("/logout", (req, res) => {
-    req.session = undefined;
-    res.redirect("/login");
-});
-router.get("/", (req, res) => {
-    console.log(req.session);
-    if (req.session && req.session.isLoggedIn) {
-        res.send(`
-
-      <div> 
-            <p> You are logged in </p>
-
-            <a href='/logout' > Logout </a>
-     </div>
-    
-    `);
-    }
-    else {
-        res.send(`  
-    <div> 
-
-    <p> You are NOT logged in </p>
-
-    <a href='/login' > Login </a>
-
-</div>
-
-
-    `);
-    }
-});
