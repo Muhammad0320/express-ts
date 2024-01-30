@@ -2,12 +2,12 @@ import "reflect-metadata";
 import { AppRouter } from "../../AppRouter";
 import { Methods } from "./Methods";
 import { MetadataKeys } from "./MetadataKeys";
-import { NextFunction, RequestHandler, Response } from "express";
+import { NextFunction, RequestHandler, Response, Request } from "express";
 
 const router = AppRouter.getInstance();
 
-const bodyValidator = (keys: string[]) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+const bodyValidators = (keys: string[]): RequestHandler => {
+  return function (req: Request, res: Response, next: NextFunction) {
     if (!req.body) {
       res.status(422).send("Invalid input");
 
@@ -15,7 +15,9 @@ const bodyValidator = (keys: string[]) => {
     }
 
     for (const key of keys) {
-      if (!req.body[key]) {
+      console.log(key);
+
+      if (!req.body.red) {
         res.status(422).send("Invalid input");
 
         return;
@@ -45,6 +47,12 @@ export const controller = (RouterPrefix: string) => {
 
       const middlewares: RequestHandler[] = Reflect.getMetadata(
         MetadataKeys.middleware,
+        target.prototype,
+        key
+      );
+
+      const validators: string[] = Reflect.getMetadata(
+        MetadataKeys.validator,
         target.prototype,
         key
       );
