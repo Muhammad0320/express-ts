@@ -1,5 +1,5 @@
 import express from "express";
-import { router } from "./routes/loginRoutes";
+
 import bodyParser from "body-parser";
 
 import session from "cookie-session";
@@ -18,8 +18,6 @@ app.use(
 );
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(router);
 
 app.use(AppRouter.getInstance());
 
