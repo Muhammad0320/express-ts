@@ -30,7 +30,6 @@ const AuthChecker = (req, res, next) => {
 };
 let RootController = class RootController {
     getRoot(req, res) {
-        console.log(req.session);
         if (req.session && req.session.isLoggedIn) {
             res.send(`
   

@@ -24,8 +24,6 @@ const AuthChecker = (req: Request, res: Response, next: NextFunction): void => {
 export class RootController {
   @get("/")
   getRoot(req: Request, res: Response) {
-    console.log(req.session);
-
     if (req.session && req.session.isLoggedIn) {
       res.send(`
   
