@@ -8,6 +8,8 @@ const AuthChecker = (req: Request, res: Response, next: NextFunction): void => {
     return next();
   }
 
+
+
   res.send(`
       
     <div>
@@ -48,7 +50,7 @@ export class RootController {
       `);
     }
   }
-
+                                  
   @get("/protected")
   @use(AuthChecker)
   getProtected(req: Request, res: Response) {

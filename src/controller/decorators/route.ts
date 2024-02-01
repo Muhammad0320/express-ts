@@ -6,7 +6,7 @@ import { RequestHandler } from "express";
 interface PropertyDescriptorWithValue extends PropertyDescriptor {
   value?: RequestHandler;
 }
-
+    
 const buildMethod = function (method: string) {
   return function (path: string) {
     return function (

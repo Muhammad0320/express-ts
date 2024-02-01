@@ -27,6 +27,8 @@ const bodyValidators = (keys: string[]): RequestHandler => {
 };
 
 export const controller = (RouterPrefix: string) => {
+
+    
   return function (target: Function) {
     Object.getOwnPropertyNames(target.prototype).forEach((key) => {
       const routeHandler = target.prototype[key];
